@@ -53,8 +53,10 @@ identifier associated with the hardware itself. This identifier is guaranteed
 to be always unique - and it is called the `MAC address`, or the Machine Access
 Control address.
 
-But wait - the network card with two ports seem like an over kill! There are
+**But wait** - the network card with two ports seem like an over kill! There are
 definitely better solutions!
+
+Let's see how we can improve this using the [Network Hub](../02-the-network-hub/02-the-network-hub.md).
 
 
 ## Command Reference
