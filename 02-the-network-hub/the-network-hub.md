@@ -1,6 +1,6 @@
 # The Network Hub
 
-From the [previous article](../01-connecting-computers/01-connecting-computers.md),
+From the [previous article](../01-connecting-computers/connecting-computers.md),
 it seems like an overkill to have to use a network card with two parts to
 connect more than two computers. One one end, the network card is more
 unnecessarily complicated, and on another, how can this scale to many computers
@@ -9,9 +9,9 @@ unnecessarily complicated, and on another, how can this scale to many computers
 How about we distribute the signal through wiring outside the network card? For
 example:
 
-![Figure A](./02-the-network-hub-a.jpg)
+![Figure A](./the-network-hub-a.jpg)
 
-[Figure A](./01-the-network-hub-a.jpg)
+[Figure A](./the-network-hub-a.jpg)
 
 Basically, when a signal is emitted from Network Card A, both Network Card B,
 and Network Card C will receive the same signal. Then, an application can
@@ -29,9 +29,9 @@ maintain the right power levels on the wires.
 
 This is what we call a "network hub".
 
-![Figure B](./02-the-network-hub-b.jpg)
+![Figure B](./the-network-hub-b.jpg)
 
-[Figure B](./01-the-network-hub-b.jpg)
+[Figure B](./the-network-hub-b.jpg)
 
 The above topology is considered a signle "Network Segment". A **"Network
 Segment"** refers to all the computers that are connected to the same physical
@@ -56,7 +56,7 @@ out whether the data the network card received is really intended for it or not
 (since the network card receives all traffic on the network).
 
 Let's see how the networking engineers have solved this problem using the
-[Network Switch](../03-the-network-switch/03-the-network-switch.md).
+[Network Switch](../03-the-network-switch/the-network-switch.md).
 
 ## Definitions
 

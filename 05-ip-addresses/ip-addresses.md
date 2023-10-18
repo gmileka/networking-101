@@ -69,13 +69,13 @@ IP will also be encoded as a destination in the data. This allows the network
 switch to inspect the data, knows where it is coming from and where it is
 heading to.
 
-![Figure A](./05-ip-addresses-a.jpg)
+![Figure A](./ip-addresses-a.jpg)
 
-[Figure A](./05-ip-addresses-a.jpg)
+[Figure A](./ip-addresses-a.jpg)
 
 So how are the ranges decided and how are the IPs assigned to each network card?
 
-We will explore IP assignment in our [next article](../06-ip-address-assignment/06-ip-address-assignment.md).
+We will explore IP assignment in our [next article](../06-ip-address-assignment/ip-address-assignment.md).
 
 ## Definitions
 

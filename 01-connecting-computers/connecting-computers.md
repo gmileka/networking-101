@@ -8,9 +8,9 @@ A network card will connected on one end with the data bus on the motherboard
 and on the other to the medium - for simplicity, let's assume it is an ethernet
 cable.
 
-![Figure A](./01-connecting-computers-a.jpg)
+![Figure A](./connecting-computers-a.jpg)
 
-[Figure A](./01-connecting-computers-a.jpg)
+[Figure A](./connecting-computers-a.jpg)
 
 If there were only two computers to connect, then one could envision a scenario
 where the cable has multiple wires - some for sending data and some for receiving
@@ -34,9 +34,9 @@ This does not scale at all.
 The first problem is that a large number of machines will be involved if one
 machine wants to talk to another on the other end of the group.
 
-![Figure B](./01-connecting-computers-b.jpg)
+![Figure B](./connecting-computers-b.jpg)
 
-[Figure B](./01-connecting-computers-b.jpg)
+[Figure B](./connecting-computers-b.jpg)
 
 Note that the scenario above mandates that when Machine A sends something to
 Machine B, it needs to indicate whether what it is sending is intended for
@@ -56,8 +56,7 @@ Control address.
 **But wait** - the network card with two ports seem like an over kill! There are
 definitely better solutions!
 
-Let's see how we can improve this using the [Network Hub](../02-the-network-hub/02-the-network-hub.md).
-
+Let's see how we can improve this using the [Network Hub](../02-the-network-hub/the-network-hub.md).
 
 ## Command Reference
 

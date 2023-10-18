@@ -12,7 +12,7 @@ only on the port which has that destination (instead of every other port).
 
 This smarter version of the network hub is called a **network switch**.
 
-Remember the application that we had running on each computer in our [first attempt](../01-connecting-computers/01-connecting-computers.md)
+Remember the application that we had running on each computer in our [first attempt](../01-connecting-computers/connecting-computers.md)
 to connect multiple computers? Well, a similar application will need to run on
 the network switch. It will inspect the incoming signals, determine their
 destination, and replicate the signal on the port that goes to that destination
@@ -37,9 +37,9 @@ in its table to capture the mapping for future communication. That way, if new
 data is being sent to the same destination, the network switch will not need to
 broadcast the data to everybody and bother them unnecessarily.
 
-![Figure A](./03-the-network-switch-a.jpg)
+![Figure A](./the-network-switch-a.jpg)
 
-[Figure A](./03-the-network-switch-a.jpg)
+[Figure A](./the-network-switch-a.jpg)
 
 Let's do a walkthrough together:
 
@@ -70,7 +70,7 @@ For example, what if we are designing the network layout for a school where
 the student computers should never be able to send (or receive traffic) from
 the administration computers - who would we achieve that?
 
-Let's see how this can be solved with [VLANs](../04-vlans/04-vlans.md) in our
+Let's see how this can be solved with [VLANs](../04-vlans/vlans.md) in our
 next article.
 
 ## Definitions

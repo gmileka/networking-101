@@ -1,6 +1,6 @@
 # vLANs
 
-In the [previous article](../03-the-network-switch/03-the-network-switch.md),
+In the [previous article](../03-the-network-switch/the-network-switch.md),
 our network switch treated all ports and computers equally.
 
 However, if we want to partition our computers into separate groups - where
@@ -29,9 +29,9 @@ Typically, each vLan definition is also assigned an identity - i.e. a vLAN ID.
 The identity can then be used while configuring it, or while configuring
 machines on the network to belong to a specific vLAN.
 
-![Figure A](./04-vlans-a.jpg)
+![Figure A](./vlans-a.jpg)
 
-[Figure A](./04-vlans-a.jpg)
+[Figure A](./vlans-a.jpg)
 
 The next problem to solve is how we group machine identities!
 

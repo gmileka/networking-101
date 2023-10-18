@@ -13,18 +13,18 @@ be like the following or higher:
 - RAM: 12 GB.
 - Disk: 40 GB of empty disk space. It is best if the disk is an SSD.
 
-![Figure A](./01-machine-setup-a.jpg)
+![Figure A](./machine-setup-a.jpg)
 
-[Figure A](./01-machine-setup-a.jpg)
+[Figure A](./machine-setup-a.jpg)
 
 Since we will be focused on Azure Linux, if you have a Windows machine and
 would like to keep it running Windows, you can create an Azure Linux on the
 Windows machine and then do all the work on the Azure Linux machine as if it
 were a physical machine.
 
-![Figure B](./01-machine-setup-b.jpg)
+![Figure B](./machine-setup-b.jpg)
 
-[Figure B](./01-machine-setup-b.jpg)
+[Figure B](./machine-setup-b.jpg)
 
 ## Setting up The Azure Linux Physical Machine
 
