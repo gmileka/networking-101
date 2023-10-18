@@ -60,8 +60,7 @@ in the network design!
 In our next article, we will talk about software assigned network identities.
 
 Worth of nothing here, that when the switch uses the MAC address for figuring
-our how to redirect data to its destination, it is called a Layer 2 routing.
-
+out how to redirect data to its destination, it is called a Layer 2 routing.
 
 ## Definitions
 
