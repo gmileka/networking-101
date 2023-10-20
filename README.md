@@ -1,39 +1,44 @@
 # Networking 101
 
-Computer networking has always been a fascinating piece in almost all computer
-systems! Only recently I have startedd learning more about it through a few
-investigations that came my way at my current job. I have started searching
-online for good resources, took notes, created diagrams, and solved some
+Computer networking has always been a fascinating topic in almost all computer
+systems! Only recently I have started learning more about it through a few
+investigations that came my way at my current job. I have researched and found
+good online resources, took notes, created diagrams, and solved some
 interesting networking mysteries. I am nothing close to a networking expert,
-however, I have been wanting to share what I have learned with others - in a
-way that focuses on understanding the principals and the architecture and also
-connecting those concepts with practical commands and case studies. In a world
-dominated by search and quick answers, I find that building the right mental
-image of something has become harder given the fragmentation of information.
-Books did not have this issue - and I think of this effort as a 101 networking
-booklet to onboard people quickly - but also introduce them to concrete
-netowrking concepts beyond the "what do I run to do X" mindset.
+however, I have been wanting to share what I have learned in a flow that starts
+with the basics and builds gradually more complex concepts - with a focus on
+what design problems we are trying to solve with each new concept, and how the
+solution fits in the bigger picture. Many online resources may focus on the 
+"how to" rather than "the why", this, on the other hand, is an attempt to
+provide "the why". It will not be a quick reference :)
 
-The more one understands about the basic principals of networking, the easier
-it is to use the tools available in that domain and get predictable results. So
-, I will start with a basic intro about networking basics - primarily scoped by
-the topics and tools I will touch on later. The domain is vast and this is not
-meant to be reference - just enough to get somebody started.
+In a way, my being not an expert can be an advantage in keeping things simple
+and easy to understand for anybody with some basic computer knowledge. At least
+, that is my execuse for daring to write about networking :) I ask for
+forgiveness from the network experts out there and happy to make any
+corrections noted.
+
+While the focus is on the concepts, I will be including hands-on commands to
+help the readers experiment and explore on their own.
+
+This series is intended for somebody who is interested in understanding how
+computer networking generally work. You can think of it as a networking 101
+class.
 
 I will be using the Azure Linux distro to demonstrate the networking concepts
 and setup I want to share. While the concepts are the same across different
 Linux distros, and across different OSes, the way one configures each distro/OS
 is different. So, we just need to be mindful of what each distro/OS uses to
-implement a certain aspect.
+implement a certain function.
 
 My choice of using the Azure Linux distro is simply based on my familiarity
 with it and me being part of the team that builds this distro at Microsoft.
 
-The content is targeted at network newbies - and it will start from scratch
-and cover as much as I can find time to cover :)
-
 Feedback is always welcome! While I will not be able to answer all questions
 individually, I will try my best to incorporate answers into the articles.
+
+The content will keep changing and improving - currently, it is in its alpha
+release!
 
 Let's start!
 
