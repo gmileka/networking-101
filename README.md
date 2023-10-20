@@ -1,16 +1,16 @@
 # Networking 101
 
-Computer networking has always been a fascinating topic in almost all computer
-systems! Only recently I have started learning more about it through a few
+Computer networking has always been a fascinating topic and I want to dedicate
+this series to introduce it to people starting to learn about it - with
+emphasis on the reasoning behing networking abstractions, architectures, and
+solutions in use today.
+
+Only recently I have started learning more about networking through a few
 investigations that came my way at my current job. I have researched and found
 good online resources, took notes, created diagrams, and solved some
 interesting networking mysteries. I am nothing close to a networking expert,
-however, I have been wanting to share what I have learned in a flow that starts
-with the basics and builds gradually more complex concepts - with a focus on
-what design problems we are trying to solve with each new concept, and how the
-solution fits in the bigger picture. Many online resources may focus on the 
-"how to" rather than "the why", this, on the other hand, is an attempt to
-provide "the why". It will not be a quick reference :)
+however, I have been wanting to share it with people and hope some find it
+useful.
 
 In a way, my being not an expert can be an advantage in keeping things simple
 and easy to understand for anybody with some basic computer knowledge. At least
@@ -19,11 +19,12 @@ forgiveness from the network experts out there and happy to make any
 corrections noted.
 
 While the focus is on the concepts, I will be including hands-on commands to
-help the readers experiment and explore on their own.
+help the readers experiment and explore on their own. The intention is not
+to provide quick solutions or complete coverage of the tooling available.
 
 This series is intended for somebody who is interested in understanding how
-computer networking generally work. You can think of it as a networking 101
-class.
+computer networking generally work and does not have prior knowledge. You can
+think of it as a networking 101 class.
 
 I will be using the Azure Linux distro to demonstrate the networking concepts
 and setup I want to share. While the concepts are the same across different
