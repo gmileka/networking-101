@@ -44,10 +44,9 @@ Let's start!
 - [VLANs](./05-vlans/vlans.md)
 - [IP Addresses](./06-ip-addresses/ip-addresses.md)
 - [IP Address Assignment](./07-ip-address-assignment/ip-address-assignment.md)
-- Subnetting
+- Name Domain Servers
 - Connecting Two Networks and Routing
 - Firewalls
-- Name Domain Servers
 - Debugging
 - Virtual Machines
   - Virtual Network Cards

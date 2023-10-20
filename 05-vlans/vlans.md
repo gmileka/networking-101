@@ -1,71 +1,71 @@
 # vLANs
 
-In the [previous article](../03-the-network-switch/the-network-switch.md),
-our network switch treated all ports and computers equally.
+In the [The Network Switch](../04-the-network-switch/the-network-switch.md)
+article, we saw that the network switch passes the data from any connected
+machine to another. The closure of such machines is called a 'LAN' or a
+'Local Area Network'.
 
-However, if we want to partition our computers into separate groups - where
-a computer from a group cannot communicate to a computer from another, then
-we have to improve on the network switch we have so far.
+If we wanted to segment the connected machines into different groups, where
+a machine from one group cannot communicate with one in another group, then
+each group can be thought of as a separate LAN. If the separation is not
+done through the use of different physical switches, but rather through the
+use of a single physical switch that has logical support for the separation,
+then, we would call each group a virtual-LAN - or vLAN for short.
 
-One solution is to have two switches - group A connects to switch 1, and group
-B connects to switch 2. This can work - but in some cases, that is not
-efficient since each of the switches can handle much than what each group has,
-more over, what if we want these groups to be configurable via software - not
-through actual physical wiring? Then, the two switch solution will not be a
-great one.
+How does the logical separation take place though?
 
-Enter vLANs - virtual local area networks.
+Since all traffic goes through the switch, the switch just needs to implement
+a filter to separate the traffic of one group of machines from the other.
 
-Remember the port-to-identity association table in our last article? We can
-program the switch so that a certain identity group cannot talk to another
-identity group. However, machines within an identity group can still talk to
-each! An identity group is a virtual-LAN - since by definition of a LAN, all
-machines within a LAN can talk to each other, likewise, all machines within
-a vLAN can talk to each other. The difference is that a vLAN is enforced by
-software on top of the hardware the connects the machines - and hence the
-'virtual' prefix (as opposed to 'physical').
+The user will need to configure the network switch to have two vLANs. The
+configuration will include a vLAN Id for referencing, and a way to designate
+which machine falls into which vLAN. This can be either hard-coded or through
+pattern matching.
 
-Typically, each vLan definition is also assigned an identity - i.e. a vLAN ID.
-The identity can then be used while configuring it, or while configuring
-machines on the network to belong to a specific vLAN.
+Internally, the switch can implement the various groups through a variety of
+ways. For example, it can maintain a port-to-identity table for each vLAN (
+figure A) - or it can add a new column; vLAN id, in the port-to-identity table
+(figure B).
 
 ![Figure A](./vlans-a.jpg)
 
 [Figure A](./vlans-a.jpg)
 
+![Figure B](./vlans-b.jpg)
+
+[Figure B](./vlans-b.jpg)
+
 The next problem to solve is how we group machine identities!
 
-Well, in reality, we just need to designate which ports on the network switch
-belong to which group. For example, we can say that ports 1-12 belong to group
-A while ports 13-24 belong to group B. Which each machine connects, it will
-encode its identity and the network switch can build it association tables -
-maybe two separate tables in this case.
+One way is to designate which ports on the network switch belong to which
+group. For example, we can say that ports 1-12 belong to vLAN 1 while ports
+13-24 belong to vLAN 2. When each machine connects, it will encode its identity
+in packets originating from it (as we have seen before) and the network switch
+can build its port-to-identity tables and assign each entry with a vLAN.
 
 What if we want to control that group association through software, not through
 physical ports?
 
 A possible way is to be able to descibe the identities collectively. For
-example, if we can descibe a group as those with a MAC address with a certain
-prefix, then the network switch can place a machine in the right group once
-it identifies itself.
+example, if we can descibe a group of machines as the machines with a MAC
+address starting with a certain prefix, then the network switch can place
+a machine in the right group once it identifies itself and without a dependency
+on which port it connected through.
 
-In reality, however, using MAC for such purpose is not doable because it is
-randomly generated and is very hard to find a meaningful pattern among a number
-of network cards installed on a LAN.
+In reality, however, using MAC addresses for such purpose is not doable because
+it is randomly generated and is very hard to find a meaningful pattern among a
+number of network cards installed on a LAN.
 
 This is where software assigned identities come into the picture! Those
 identities can be shaped with much more flexibility for easier referencing
-in the network design!
+in the network design.
 
-In our next article, we will talk about software assigned network identities.
+In our next article, we will talk about software assigned network identities
+and how they make many things easier to manage.
 
 Worth of nothing here, that when the switch uses the MAC address for figuring
 out how to redirect data to its destination, it is called a Layer 2 routing.
 
-## Definitions
+----
 
-| Term                  | Description                                                                                      |
-|-----------------------|--------------------------------------------------------------------------------------------------|
-| vLAN                  | A group of machines connected to a switch and isolated by software (running on the switch) from communicating with other physically connected machines to the same switch. |
-| vLAN ID               | A software identifier for the vLAN configuration.                                                |
-| Layer 2 Communication | Any communication that uses the MAC address of the network adapters to communicate with them.    |
+[Main Page](../README.md) | [Previous: The Network Switch](../04-the-network-switch/the-network-switch.md) | [Next: IP Addresses](../06-ip-addresses/ip-addresses.md)
