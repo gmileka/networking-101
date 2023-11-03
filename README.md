@@ -1,6 +1,6 @@
 # Networking 101
 
-![Figure A](./computer - network.jpg)
+![Figure A](./computer-network.jpg)
 
 Computer networking has always been a fascinating topic - it embodies many
 computer science concepts, and presents us with many challenges - some have
@@ -66,22 +66,22 @@ hope you stop by every now and then to check out the new articles!
 
 Let's start!
 
- -  [Connecting Two Computers](./01 - connecting - two - computers/connecting - two - computers.md)
- -  [Connecting Multiple Computers  -  The Network Hub](./02 - connecting - multiple - computers/connecting - multiple - computers.md)
- -  [The Hardware Identity](./03 - hardware - identity/hardware - identity.md)
- -  [The Network Switch](./04 - the - network - switch/the - network - switch.md)
- -  [VLANs](./05 - vlans/vlans.md)
- -  [IP Addresses](./06 - ip - addresses/ip - addresses.md)
- -  [IP Address Assignment](./07 - ip - address - assignment/ip - address - assignment.md)
- -  Name Domain Servers
- -  Connecting Two Networks and Routing
- -  Firewalls
- -  Debugging
- -  Virtual Machines
-   -  Virtual Network Cards
-   -  Virtual Switches
- -  Labs
-   -  [Machine Setup](./10 - machine - setup/machine - setup.md)
- -  [Glossary](./glossary.md)
+- [Connecting Two Computers](./01-connecting-two-computers/connecting-two-computers.md)
+- [Connecting Multiple Computers - The Network Hub](./02-connecting-multiple-computers/connecting-multiple-computers.md)
+- [The Hardware Identity](./03-hardware-identity/hardware-identity.md)
+- [The Network Switch](./04-the-network-switch/the-network-switch.md)
+- [VLANs](./05-vlans/vlans.md)
+- [IP Addresses](./06-ip-addresses/ip-addresses.md)
+- [IP Address Assignment](./07-ip-address-assignment/ip-address-assignment.md)
+- Name Domain Servers
+- Connecting Two Networks and Routing
+- Firewalls
+- Debugging
+- Virtual Machines
+  - Virtual Network Cards
+  - Virtual Switches
+- Labs
+  - [Machine Setup](./10-machine-setup/machine-setup.md)
+- [Glossary](./glossary.md)
 
- -  -  -  - 
+---- 
