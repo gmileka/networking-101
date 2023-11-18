@@ -48,3 +48,23 @@
 
 [Figure H](virtual-machine-manager-6.JPG)
 
+
+```bash
+
+virt-install \
+  --name mariner-vm-x3 \
+  --memory 4096 \
+  --vcpus 2 \
+  --cdrom /home/george/mariner-vms/mariner-2.0-x86_64-iso \
+  --disk size=8,bus=sata \
+  --cpu host \
+  --machine pc-i440fx-hirsute \
+  --os-variant linux2020 \
+  --network default \
+  --boot cdrom,hd \
+  --noautoconsole
+
+  --boot uefi,loader=/usr/share/OVMF/OVMF_CODE_4M.fd,loader_secure=no \
+
+
+```
