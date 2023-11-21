@@ -29,8 +29,8 @@ guest virtual machines running Azure Linux.
 [Baremetal Ubuntu Configuration](./baremetal-ubuntu.jpg)
 
 Here are detailed walk-throughs on how do this setup:
-- [Create Linux Host](./create-linux-host.md)
-- [Create Azure Linux virtual machines](./create-ubuntu-vm.md)
+- [Create Linux Host](./create-ubuntu-vm/create-linux-host.md)
+- [Create Azure Linux virtual machines](./create-azure-linux-vm/create-linux-vms.md)
 
 ## Windows Setup
 
@@ -43,6 +43,6 @@ as a virtual machine running on the Windows host.
 [Baremetal Windows Configuration](./baremetal-windows.jpg)
 
 Here are detailed walk-throughs on how do this setup:
-- [Create Windows Host](./create-windows-host.md)
-- [Create Linux VMs](./create-linux-vms.md)
-- [Create Azure Linux virtual machines](./create-ubuntu-vm.md)
+- [Create Windows Host](./create-windows-host/create-windows-host.md)
+- [Create Linux Host](./create-ubuntu-vm/create-linux-host.md)
+- [Create Azure Linux virtual machines](./create-azure-linux-vm/create-linux-vms.md)
