@@ -1,9 +1,22 @@
 # Create Linux Host
 
-- Download the latest Ubuntu Desktop LTS version from there download page here 
-  [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop).
+In this walk-through, we will create the Linux host using the Ubuntu
+distribution, and install the virtualization stack. The vritualization stack
+allows us to create virtual machines within the host.
 
-#### Install Utilities
+### Installing Ubuntu
+
+- Download the latest Ubuntu Desktop LTS ISO version from there download page
+  here: [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop).
+- If installing on:
+  - **a physical machine**, burn the downloaded ISO file unto a CD
+    or a flash drive (you can use [Rufus](https://rufus.ie/en/) to do that).
+  - **a virtual machine** on Hyper-V/Windows, follow the instructions
+    [here](./create-ubuntu-vm.md).
+- Follow the Ubuntu installer until it is done.
+- Start a Terminal window and follow the steps below.
+
+### Install Utilities
 
 ```bash
 sudo apt update
@@ -12,7 +25,9 @@ sudo apt-get --assume-yes install openssh-server vim tar wget curl gawk
 sudo apt-get update
 ```
 
-#### Install virtualization stack
+### Install and Configure The Virtualization Stack
+
+Install libevirt, qemu, etc...
 
 ```bash
 sudo apt-get --assume-yes install qemu-utils qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
@@ -21,7 +36,7 @@ sudo adduser $USER kvm
 sudo apt-get --assume-yes install virt-manager
 ```
 
-#### Configure QEMU
+Configure QEMU...
 
 ```bash
 sudo ln -s /usr/bin/qemu-system-x86_64 /usr/libexec/qemu-kvm
@@ -33,7 +48,7 @@ sudo vim /etc/libvirt/qemu.conf
 
 ![configure-qemu-conf.jpg](configure-qemu-conf.jpg)
 
-#### Configure AppArmore
+And configure AppArmore...
 
 ```bash
 sudo vim /etc/apparmor.d/usr.sbin.libvirtd
@@ -43,7 +58,10 @@ sudo vim /etc/apparmor.d/usr.sbin.libvirtd
 
 ![configure-apparmor.jpg](configure-apparmor.jpg)
 
-#### Install xrdp
+### Install xrdp
+
+This step is not required, but I have found it convenient to remotely use the
+Ubuntu UX.
 
 ```bash
 # Install xrdp client
@@ -52,8 +70,12 @@ sudo adduser xrdp ssl-cert
 sudo systemctl restart xrdp
 ```
 
-#### Reboot
+### Reboot
 
 ```bash
 sudo reboot
 ```
+
+----
+
+[Basic Setup](../basic-setup.md)
