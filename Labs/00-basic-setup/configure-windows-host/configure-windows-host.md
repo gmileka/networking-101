@@ -1,4 +1,4 @@
-# Create Windows Host
+# Configure Windows Host
 
 #### Make a Windows machine ping-able
 
@@ -9,3 +9,7 @@
     - Update Domain/Private/Public to Enabled=Yes
 - 
 ```
+
+----
+
+[Basic Setup](../basic-setup.md)

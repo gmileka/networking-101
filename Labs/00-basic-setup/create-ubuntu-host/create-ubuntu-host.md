@@ -1,4 +1,4 @@
-# Create Linux Host
+# Create The Ubuntu Host
 
 In this walk-through, we will create the Linux host using the Ubuntu
 distribution, and install the virtualization stack. The vritualization stack
