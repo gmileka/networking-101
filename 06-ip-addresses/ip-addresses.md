@@ -1,96 +1,126 @@
 # IP Addresses
 
+![thumbnail](article-thumbnail-ip-addresses.jpg)
+
+## Overview
+
 In the previous articles, we have talked about how computers need an identity
-on the network so traffic can be directed to them.
+on the network so traffic can be routed to them.
 
 One identity we talked about is the hardware identity of the network card -
 a.k.a. the MAC address.
 
-When there is a group of computers to manage, it is easier to manage many
-networking aspects if we can assign identities that are easy to understand, 
-query, and group.
+When we have a group of computers to manage, it is far more efficient and
+robust to manage many of its networking aspects if we have a mechanism to
+assign network identities that are easy to understand, query, and group.
 
 The IP (Internet Protocol) addressing scheme is one such mechanism. It
-satisfies these requirements by simply being a range of numbers that are
-specified by the user. The IP scheme has two versions in use today; IPv4 and
-IPv6.
+satisfies these requirements by simply providing a range of numbers - each of
+which can be assigned to a network interface of a given machine. An assigned
+number becomes the identity of the associated network interface and is called
+its `IP address`. Other network computers/devices can refer to such network
+interface using that `IP address`.
 
-In the case of IPv4, the range is specified by 4 bytes. The convention for
-writing it is four decimal numbers separated by dots - where each number
-represents a byte. For example: `255.255.0.255`.
+## Format and Ranges
+
+The IP addressing scheme has two versions in use today: IPv4 and IPv6.
+
+In the case of IPv4, the range of available IP addresses is specified by 4
+bytes. The convention for writing an IPv4 address is to write four decimal
+numbers separated by dots - where each decimal number corresponds to a byte.
+Examples include `255.255.0.255`, `10.30.0.20`, `172.10.0.2`, etc. Given that
+a byte can only have values between 0 and 255, each of the four IPv4 address
+numbers can only range from 0 to 255.
 
 For the case of IPv6, the range is specified by 16 bytes. The convention for
-writing it is 8 hexadecimal numbers separate by colons - where each number
-represents 2 bytes. For example `2001:0DB8:AC10:FE01:0000:0000:0000:0001`.
+writing it is 8 hexadecimal numbers separated by colons - where each number
+represents 2 bytes - for example: `2001:0DB8:AC10:FE01:0000:0000:0000:0001`.
 
 Because these identities are just numbers, you can easily carve ranges - for
-example, you can say I will be using the range from 0 to 99 for vLAN 1 and 100
-to 199 for vLAN2. The numbers are easy to write and remember, and so are the
-ranges!
+example, you can say I will be using:
+- the range `from 123.123.123.0 to 123.123.123.7` for vLAN 1.
+- the range `from 123.123.123.8 to 123.123.123.15` for vLAN 2.
 
-The networking engineers have taken a step further when defining the ranges,
-and instead of using a 'from x to y' notation, they represent it with how many
-bits are reserved for the fixed part of the bit string.
+The numbers are easy to write and remember, and so are the ranges!
 
-For example, in IPv4 there are 4 bytes which contain 4x8=32 bits. If I want
-to define the range 0-3, that means the 2 least significant bits will be
-changed to accommodate that range, and the rest (the other 30 bits) will stay
-fixed. So, the notation for that range would be `0.0.0.0/30`.
+Now, let's see what those ranges look like in binary:
 
-Note that the range does not have to start from 0, for example, you can define:
-`10.0.0.0/30` - and that will mean the addresses:
-- `10.0.0.0`
-- `10.0.0.1`
-- `10.0.0.2`
-- `10.0.0.3`
+![Figure A](vlan-ranges.jpg)
 
-Another way of expressing the range is the "Subnet Mask" - where we create a
-mask of the same size as the IP adddressing scheme, and then we set the bits
-to be fixed to 1s. For example, `255.255.240.0` transaltes to `11111111.11111111.11110000.00000000`,
-which means the first 20 bits will be fixed, and last 12 bits can change.
+[Figure A](vlan-ranges.jpg)
 
-Note that this notation does not say what the fixed part is - it just says which
-bits are fixed. For example: if the subnet mask is `255.255.240.0`, and we know
-that IP `172.21.224.1` belongs to that range, then:
+Notice that,
+we can represent the two ranges we have just mentioned as follows (note the
+`x`s):
+- the range `0111-1011.0111-1011.0111-1011.0000-0xxx` for vLAN 1.
+- the range `0111-1011.0111-1011.0111-1011.0000-1xxx` for vLAN 2.
 
-```
-Subnet Mask: 255.255.240.0  11111111.11111111.11110000.00000000
-                            |------- fixed ------||--variable-|
-IP         : 172.21.224.1   10101100.00010101.11100000.00000001
-Range Start:                10101100.00010101.11100000.00000000 -> 172.21.224.0
-Range End  :                10101100.00010101.11101111.11111111 -> 172.21.239.255
-```
+Now, consider an address like `123.123.123.124` - which range does this address
+belong to? First, its binary form is `0111-1011.0111-1011.0111-1011.0111-1100`.
+And looking up the ranges in the table, it belongs to vLAN 2.
 
-If we were to write this in the IP mask notation, we would write: `172.21.224.0/20`.
+To easily encode the range an IP address belongs to, the networking engineers
+have devised the IP mask notation - where basically the range is represented
+by the number of bits that are fixed (from the left) in a given IP address.
 
-Note that IP assignment will be part of the data travelling the network. For
-example, if Machine A with IP 10.0.0.1 sends data, that IP address will be
-encoded in the network packet as its source. If it is sending it to Machine B
-whose IP is 10.0.0.2, then, likewise, that IP address wil be encoded in the
-network packet as its destination.
+For example, the number of bits that is fixed for the ranges above is **29**.
+So, we can write `123.123.123.124/29`. By looking at such notation, we can
+deduce what range the address `123.123.123.124` belongs to.
 
-When the network switch receives the data packet, it will inspect its source
-and destination and direct it accordingly.
+Another way of expressing the range an address belongs to is to turn the number
+of fixed bits (from above) into a 'mask' - where a digit set to 1 means it does
+not change and a digit set to 0 means it can change. Such a mask is called the
+"network mask". And because the network mask bit count has to match the count
+of bits in an IP address, it looks very similar to an IP address, but it does
+not denote the same thing.
 
-![Figure A](./ip-addresses-a.jpg)
+In our example, above, the IP mask `/29` would be translated to network mask:
+`1111-1111.1111-1111.1111-1111.1111-1000` or `255.255.255.248`.
 
-[Figure A](./ip-addresses-a.jpg)
+Note that the network mask by itself cannot tell us the range, however, it
+can tell us the size of the range. For example, converting `248` to binary
+yields `1111-1000` - so, we know the size of the range is 8 addresses (3 0s
+indicate 3 bits can change, which results in 8 combinations).
 
-Since the software identity assignment is on top of the physical layer (
-physical network cards, physical network card identity), it is considered a
-layer higher - Layer 3.
+When the network mask is combined with an IP address, only then it can be used
+to deduce the exact range. For example:
 
-Some switches operate at Layer 2 (physical identity; or MAC addresses) and some
-operate at Layer 2 (software identity; or IP addresses).
+![Figure A](ip-addresses-network-masks-ex0.jpg)
 
-So how do the IP addresses get generated and assigned to machine?
+[Figure A](ip-addresses-network-masks-ex0.jpg)
 
-Let's explore that in the next article!
+Another example:
 
-## Command Reference
+![Figure B](ip-addresses-network-masks-ex1.jpg)
 
-On Windows, you can find the IPv4 address of the network card on your computer
-by running the below command and looking for the `IPv4 Address` in the output:
+[Figure B](ip-addresses-network-masks-ex1.jpg)
+
+## Layer 3 Network Switches
+
+Given that a network packet carries the identities of its source and
+destination, then, the IP address of the source network interface and the IP
+address of the destination network interface will both be encoded in the packet.
+
+In the previous article, the network switch kept a mapping of each MAC address
+and port - so that it can route incoming packets efficiently. Such network
+switch is called a Layer 2 Network Switch (because it operates on the MAC
+addresses).
+
+In order to take advantage of the IP address, the network switch needs to be
+aware of it so that it can extract it from incoming packets and use it to build
+the address to port mapping as with the MAC addresses (and then route the
+packets). Such network switch is called a Layer 3 Network Switch (because it
+operates on the IP addresses).
+
+![Figure C](./ip-addresses-a.jpg)
+
+[Figure C](./ip-addresses-a.jpg)
+
+## Try It Out
+
+On Windows, you can find the IPv4 address and network mask of the network
+interface on your computer by running the command below and looking for the
+`IPv4 Address` in the output:
 
 ```bash
 ipconfig /all
@@ -102,8 +132,9 @@ Ethernet adapter vEthernet (Private):
 ...
 ```
 
-On Azure Linux, you can achieve the same by running the below command and
-looking for the `inet` lines in the output:
+On Azure Linux, you can find the IPv4 address and IP mask of the network
+interface on your computer by running the command below and looking for the
+`inet` lines in the output:
 
 ```bash
 ip a
@@ -112,6 +143,12 @@ link/ether 00:11:22:33:44:55
 inet 10.137.193.71/23
 ...
 ```
+
+## Next Steps
+
+So how do the IP addresses get generated and assigned to each network interface?
+
+We will explore that in the next article!
 
 ----
 
