@@ -2,27 +2,39 @@
 
 ## Overview
 
-In the same way one can assign a name to a machine when it is being setup, one
-can also assign an IP address to the machine in the same fashion. Because the
-IP is assigned manually, it is called a static IP. This is in contrast to a
-dynamic IP that is assigned automatically by another computer on the network.
+So, how does a computer get its IP address? Well, there are fundamentally two
+ways; a user can assign a specific IP address to the computer, or the computer
+itself can ask a central server for an IP address.
+
+When the user assigns the IP address to a computer, it is called a
+`static IP address` because it will not change unless the user explicitly
+assigns a new one.
+
+On the other hand, if the computer asks for the IP address, it is called a
+`dynamic IP address` because it may change every time the computer asks for
+a new IP address.
 
 ## Static IPs
 
-Static IPs are useful in cases where there is no infrastructure to assign IPs
-automatically. They are also useful when the operator (the person setting up
-the machine) wants predictable/pre-known IPs to use with other software
-solutions.
+Static IP addresses are useful in cases where either there is no infrastructure
+to assign IP addresses automatically or the user setting up the machines
+requires predictable IP addresses (for use with other software solutions, for
+example).
 
-When configuring a computer with a static IP, we need to first know which
-network it will be part of, and what the subnet mask for that network is.
-This will help us assign the computer an IP that is reachable by other
-computers on that network. Should we assign an IP outside the allowed range,
-other computers will not be able to reach it - the switch will think it does
-not belong to the same network.
+When configuring a computer with a static IP address, we need to first know
+what network switch it will be connected to. Based on the network switch, we
+can find out the IP address ranges (or IP masks) that it is configured to
+handle. Once we identify our target range (IP mask), we need to choose an IP
+address that falls within that target range and has not been assigned to
+another machine. Should we choose an IP address outside the ranges supported
+by the network switch, the network switch will not forward the packages
+correctly.
 
 Each operating system has its own way of defining static IPs. Let's see
-how Azure Linux allows its user to configure static IPs.
+how Azure Linux allows its users to configure static IPs.
+
+I will be preparing lab walk-throughs soon - but for now, let's just take a
+quick look at how configuring a static IP address is done.
 
 ### Static IP Assignment on Azure Linux
 
@@ -55,7 +67,7 @@ ifconfig eth0 10.185.135.4 netmask 255.255.255.128 up
 #   netmask 255.255.255.128
 #                is the subnet mask.
 #   up
-#                is a flag to bring the interface up and enable it.
+#                is a flag to enable the interface.
 ```
 
 Another way is to use `ip address add`. For example:
@@ -93,30 +105,30 @@ systemctl restart systemd-networkd
 ```
 
 Note that the `DHCP=no` is important to ensure that the network stack does not
-try to assign an IP dynamically to this network interface.
+try to ask for an IP address and assign to this network interface.
 
 ## Dynamic IPs
 
-Dynamic IPs are IPs that get assigned automatically by another computer on the
-network. This computer is called a DHCP server. The DHCP server is first
-configured with the range of IPs that is available, and when a new computer
-wants to join the network, it broadcasts a request for an IP. The request will
-get to all other computers on the network including the DHCP server. The DHCP
-server will then allocate an unused IP from the specified range, and send it
-back to the computer that sent the IP request. The new computer will then
-configure the network adapter with that IP.
+A computer can get a dynamic IP address by broadcasting on the network it is
+connected to a request for an IP address. A given network should only have
+a single computer running a software that:
+- listens to such IP address requests.
+- looks up the allowed range (network mask).
+- finds an unused IP address in its own database.
+- responds to the request with the unused IP addrress.
 
-The DHCP server is running, well, the DHCP service stack - that's a service
-that maintains a database of available IPs and keeps track of which ones
-are available and which have been assigned. It also keeps track of how long
-each IPs has been assigned and can have a time limit before recycling the used
-IPs.
+The computer/software is called the DHCP (Dynamic Host Configuration Protocol)
+server. The computer who is asking for a dynamic IP address must be running a
+DHCP client (to place the request, and to configure the machine with the IP
+address in the response).
 
-The DHCP client is running on every machine that is configured to request a
-dynamic IP. While the DHCP client is one instance per machine, it applies only
-to network cards that are configured to get dynamic IPs - in other words, you
-can have a machine with multiple network cards - some are statically configured
-with IPs and some are dynamically configered.
+Before the DHCP server can respond to IP address requests, it must be first
+configured with the range of IP addresses that are available (IP mask).
+
+In the diagram below, Machine B wants an IP address for itself, so it
+broadcasts a request. While both Machine A and Machine C receive the request,
+only Machine A responds because it is the only machine running the DHCP server
+and can hand out IP addresses.
 
 ![Figure A](./dynamic-ip.jpg)
 
@@ -124,8 +136,8 @@ with IPs and some are dynamically configered.
 
 ### Dynamic IP Configuration on Azure Linux
 
-To configure a specific network card to use dynamic IPs on Azure Linux, you can
-run the following commands:
+To configure a specific network card to use dynamic IP addresses on Azure Linux,
+you can run the following commands:
 
 ```bash
 # Create a configuration file
@@ -145,7 +157,13 @@ systemctl restart systemd-networkd
 ```
 
 Note how we are configuring the `DHCP` property to `yes` instead of `no` as
-we did in the static IP configuration above.
+we did in the static IP address configuration above.
+
+## Reserved IP Address Ranges
+
+Whether it is a static IP address assignment or a dynamic one, we need to
+determine the IP range or IP mask. But who decides the IP mask for a given
+network? Is it arbitrary? This is what we will talk about in our next article!
 
 ----
 

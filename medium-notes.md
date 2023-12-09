@@ -9,10 +9,11 @@
 - [The Network Switch](https://medium.com/@georgeraafat/the-network-switch-2f15320566d8)
 - [vLANs](https://medium.com/@georgeraafat/vlans-e0586e2ac6dd)
 - [IP Addresses](https://medium.com/@georgeraafat/ip-addresses-76011a4a4f15)
+- [IP Address Assignment](https://medium.com/@georgeraafat/ip-address-assignment-049b71b336eb)
 
 #### Editing
 
-`ctrl+atl+6` to inset a code block.
+`ctrl+atl+6` to insert a code block.
 
 #### Keywords
 
@@ -30,3 +31,4 @@
   - Series Introduction.
 - Update previous article with link to new article.
 - Update series introduction with link to new article.
+- Update github.
