@@ -10,17 +10,28 @@
 - [vLANs](https://medium.com/@georgeraafat/vlans-e0586e2ac6dd)
 - [IP Addresses](https://medium.com/@georgeraafat/ip-addresses-76011a4a4f15)
 - [IP Address Assignment](https://medium.com/@georgeraafat/ip-address-assignment-049b71b336eb)
+- [Connecting Two Networks](https://medium.com/@georgeraafat/connecting-two-networks-28fc2509ceb5)
 - Lab Series
   - [The Networking Series Lab: Basic Setup](https://medium.com/@georgeraafat/the-networking-series-lab-basic-setup-929b477d0698)
     - [The Networking Series Lab: Configuring The Windows Host](https://medium.com/@georgeraafat/the-networking-series-lab-configuring-the-windows-host-ac44a9aa65c3)
     - [The Networking Series Lab: Creating an Ubuntu Virtual Machine](https://medium.com/@georgeraafat/the-networking-series-lab-creating-an-ubuntu-virtual-machine-291180c2ccd7)
     - [The Networking Series Lab: Installing The Ubuntu Host](https://medium.com/@georgeraafat/the-networking-series-lab-installing-the-ubuntu-host-7a44cf972d9f)
     - [The Networking Series Lab: Create Azure Linux Virtual Machines](https://medium.com/@georgeraafat/the-networking-series-lab-create-azure-linux-virtual-machines-c1b7303750f8)
-
+- [in progress] ip-address-known-ranges.
+- [in progress] labs/01-unlock-ping.
 
 #### Editing
 
 `ctrl+atl+6` to insert a code block.
+
+#### Topics to Cover
+
+- Ports and port numbers.
+- Interaction between kernel and applications.
+- Connecting Two Networks
+  - Diagram showing the port routing to applications.
+  - Diagram showing the internet and many private network.
+  - Diagram showing the NAT mapping.
 
 #### Keywords
 
